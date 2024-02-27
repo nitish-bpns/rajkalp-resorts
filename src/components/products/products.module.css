@@ -1,0 +1,84 @@
+.container {
+  width: 100%;
+  padding: 3vw 0vw 3vw 0vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+}
+.head {
+  color: #465248;
+  font-size: 2vw;
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+  letter-spacing: 3px;
+}
+.cards {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.amCard {
+  width: 25%;
+  position: relative;
+}
+.amImg {
+  width: 100%;
+  filter: blur(4px);
+  height: 35vw;
+  z-index: 3;
+  /* position: absolute; */
+}
+.cardItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vw;
+  width: 100%;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  top: 40%;
+}
+.icImg {
+  width: 30%;
+}
+.desc {
+  color: white;
+  letter-spacing: 2px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.8vw;
+}
+@media screen and (max-width: 464px) {
+  .container {
+    padding: 2vw 0vw 7vw 0vw;
+    gap: 4vw;
+  }
+  .amCard {
+    width: 50%;
+    position: relative;
+  }
+  .amImg {
+    width: 100%;
+    filter: blur(2px);
+    height: 65vw;
+    z-index: 3;
+    /* position: absolute; */
+  }
+  .icImg {
+    width: 50%;
+  }
+  .desc {
+    color: white;
+    letter-spacing: 2px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 3vw;
+  }
+  .cardItem {
+    top: 30%;
+  }
+  .head {
+    color: #465248;
+    font-size: 6vw;
+  }
+}
