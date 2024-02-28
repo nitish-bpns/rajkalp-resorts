@@ -34,7 +34,7 @@ const Footer = () => {
         />
         </div>
         <div className={styles.contb}>
-          +91 9922420555/8180919176
+          +91 9922420555/7709860575
         </div>
       </div>
 

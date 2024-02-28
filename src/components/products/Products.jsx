@@ -27,6 +27,13 @@ const Products = () => {
           <div className={styles.cardItem}>
             <Image src={ic1} width={100} className={styles.icImg} alt="img" />
             <div className={styles.desc}>Accomodation</div>
+            <div className={styles.detailHover}>
+              Indulge in unparalleled luxury at Rajkalp Resorts - Tadoba, where
+              every accommodation is meticulously designed to offer a harmonious
+              blend of comfort and sophistication. Immerse yourself in opulent
+              interiors, breathtaking views, and personalized service, ensuring
+              an unforgettable retreat amidst the serenity of nature.
+            </div>
           </div>
         </div>
         <div className={styles.amCard}>
@@ -40,6 +47,7 @@ const Products = () => {
           <div className={styles.cardItem}>
             <Image src={ic2} width={100} className={styles.icImg} alt="img" />
             <div className={styles.desc}>Restaurant</div>
+
           </div>
         </div>
         <div className={styles.amCard}>
@@ -53,6 +61,7 @@ const Products = () => {
           <div className={styles.cardItem}>
             <Image src={ic3} width={100} className={styles.icImg} alt="img" />
             <div className={styles.desc}>Swimming Pool</div>
+ 
           </div>
         </div>
         <div className={styles.amCard}>
@@ -66,6 +75,7 @@ const Products = () => {
           <div className={styles.cardItem}>
             <Image src={ic4} width={100} className={styles.icImg} alt="img" />
             <div className={styles.desc}>Clubhouse</div>
+
           </div>
         </div>
       </div>

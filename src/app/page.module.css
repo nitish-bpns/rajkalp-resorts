@@ -6,7 +6,9 @@
   width: 100%;
   position: relative;
 }
-
+.heroSectionm {
+  display: none;
+}
 .heroImg {
   position: relative;
   z-index: -1;
@@ -29,6 +31,7 @@
   gap: 2vw;
   padding: 2vw;
   color: #fff;
+  z-index: 5;
 }
 .heroBtn {
   color: white;
@@ -119,6 +122,14 @@
 
 @media screen and (max-width: 464px) {
   .heroImg {
+    display: none;
+  }
+  .heroSectionm {
+    display: block;
+    width: 100%;
+    position: relative;
+  }
+  .heroSection {
     display: none;
   }
   .heroImg2 {
