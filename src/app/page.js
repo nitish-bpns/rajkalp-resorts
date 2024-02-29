@@ -24,7 +24,8 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
+// import { Navigation } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 import { Autoplay } from "swiper/modules";
 
 export default function Home() {
@@ -32,14 +33,17 @@ export default function Home() {
     <div className={styles.container}>
       <div className={styles.heroSection}>
         <Swiper
-          navigation={true}
+          // navigation={true}
+          pagination={{
+            dynamicBullets: true,
+          }}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
           }}
           speed={2000}
           loop={true}
-          modules={[Navigation, Autoplay]}
+          modules={[Pagination, Autoplay]}
           className="mySwiper"
         >
           <SwiperSlide>
@@ -72,15 +76,18 @@ export default function Home() {
       </div>
 
       <div className={styles.heroSectionm}>
-      <Swiper
-          navigation={true}
+        <Swiper
+          // navigation={true}
+          pagination={{
+            dynamicBullets: true,
+          }}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
           }}
           speed={2000}
           loop={true}
-          modules={[Navigation, Autoplay]}
+          modules={[Pagination, Autoplay]}
           className="mySwiper"
         >
           <SwiperSlide>
@@ -89,14 +96,22 @@ export default function Home() {
           </SwiperSlide>
           <SwiperSlide>
             {" "}
-            <Image src={mhero2} className={styles.heroImg2} placeholder="blur" />
+            <Image
+              src={mhero2}
+              className={styles.heroImg2}
+              placeholder="blur"
+            />
           </SwiperSlide>
           <SwiperSlide>
             {" "}
-            <Image src={mhero3} className={styles.heroImg2} placeholder="blur" />
+            <Image
+              src={mhero3}
+              className={styles.heroImg2}
+              placeholder="blur"
+            />
           </SwiperSlide>
         </Swiper>
-        
+
         <div className={styles.heroInfo}>
           <div className={styles.heroTitle}>
             RAJKALP RESORTS & <br />
