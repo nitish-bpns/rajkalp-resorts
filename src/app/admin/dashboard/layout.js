@@ -7,6 +7,10 @@ import Loader from "@/components/loader/Loader";
 import axios from "axios";
 
 function Layout({ children }) {
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+
   return (
     <>
       <div className={styles.nav}>
