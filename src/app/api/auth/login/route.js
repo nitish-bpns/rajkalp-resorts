@@ -1,45 +1,45 @@
-import Admin from "@/database/models/admin";
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken"
 import connectDB from "@/database/dbConfig";
+import User from "@/database/models/user";
 
 export async function POST(req) {
     try {
         await connectDB();
+
         const reqBody = await req.json()
         const { email, password } = reqBody;
-        console.log(reqBody);
 
-        //check if user exists
-        const user = await Admin.findOne({ email });
+        const user = await User.findOne({ email });
+
         if (!user) {
-            return NextResponse.json({ error: "Such an admin does not exist" }, { status: 400 })
+            return NextResponse.json({ error: "No user found" }, { status: 400 })
         }
 
-        console.log("Admin exists");
+        const isMatch = await user.matchPassword(password);
 
-        //check if password is correct
-        // const validPassword = await bcryptjs.compare(password, user.password)
-        if (password !== user.password) {
-            return NextResponse.json({ error: "Invalid password" }, { status: 400 })
+        if (!isMatch) {
+            return NextResponse.json({ error: "Invalid credentials" }, { status: 400 })
         }
-        console.log(user);
 
-        //create token data
         const tokenData = {
             id: user._id,
-            email: user.email
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
         }
-        //create token
+
         const token = jwt.sign(tokenData, process.env.TOKEN_SECRET, { expiresIn: "1d" })
 
         const response = NextResponse.json({
             message: "Login successful",
-            success: true,
+            user: tokenData,
         })
+
         response.cookies.set("token", token, {
             httpOnly: true,
         })
+
         return response;
 
     } catch (error) {
