@@ -1,0 +1,30 @@
+.container {
+  padding: 4% 12%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vw;
+  height: 110vh;
+}
+.inputRow {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+}
+.label1 {
+  width: 49%;
+  float: right;
+  background-color: white;
+  color: gray;
+  font-size: 1vw;
+  padding: 0.5vw 0.5vw 0.5vw 0.8vw;
+}
+.inputcol2 {
+  width: 49%;
+  float: right;
+  background-color: white;
+  border: 1px solid grey;
+  color: gray;
+  font-size: 1vw;
+  padding: 0.5vw 0.5vw 0.5vw 0.8vw;
+  border-radius: 8px;
+}
