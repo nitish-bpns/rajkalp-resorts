@@ -29,6 +29,9 @@ const Navbar = () => {
         <Link className={styles.link} href="/#footer">
           BOOK NOW
         </Link>
+        <Link className={styles.link} href="/login">
+          LOGIN
+        </Link>
       </div>
       <Image
         className={styles.hamburger}

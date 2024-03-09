@@ -27,120 +27,138 @@ import "swiper/css/navigation";
 // import { Navigation } from "swiper/modules";
 import { Pagination } from "swiper/modules";
 import { Autoplay } from "swiper/modules";
+import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/footer/Footer";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <div className={styles.heroSection}>
-        <Swiper
-          // navigation={true}
-          pagination={{
-            dynamicBullets: true,
-          }}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          speed={2000}
-          loop={true}
-          modules={[Pagination, Autoplay]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            {" "}
-            <Image src={hero} className={styles.heroImg} placeholder="blur" />
-          </SwiperSlide>
-          <SwiperSlide>
-            {" "}
-            <Image src={hero3} className={styles.heroImg} placeholder="blur" />
-          </SwiperSlide>
-          <SwiperSlide>
-            {" "}
-            <Image src={hero2} className={styles.heroImg} placeholder="blur" />
-          </SwiperSlide>
-        </Swiper>
-        <div className={styles.heroInfo}>
-          <div className={styles.heroTitle}>
-            RAJKALP RESORTS & <br />
-            PRECIOUS SERVICES
+    <>
+      <Navbar />
+      <div className={styles.container}>
+        <div className={styles.heroSection}>
+          <Swiper
+            // navigation={true}
+            pagination={{
+              dynamicBullets: true,
+            }}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            speed={2000}
+            loop={true}
+            modules={[Pagination, Autoplay]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              {" "}
+              <Image src={hero} className={styles.heroImg} placeholder="blur" />
+            </SwiperSlide>
+            <SwiperSlide>
+              {" "}
+              <Image
+                src={hero3}
+                className={styles.heroImg}
+                placeholder="blur"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              {" "}
+              <Image
+                src={hero2}
+                className={styles.heroImg}
+                placeholder="blur"
+              />
+            </SwiperSlide>
+          </Swiper>
+          <div className={styles.heroInfo}>
+            <div className={styles.heroTitle}>
+              RAJKALP RESORTS & <br />
+              PRECIOUS SERVICES
+            </div>
+            <div className={styles.heroDesc}>
+              Elevate your lifestyle with Rajkalp Resorts & Precious Services -
+              where <br /> dreams meet investments, and every stay is a royal
+              experience
+            </div>
+            <Link href="/#footer">
+              <div className={styles.heroBtn}>EXPLORE</div>
+            </Link>
           </div>
-          <div className={styles.heroDesc}>
-            Elevate your lifestyle with Rajkalp Resorts & Precious Services -
-            where <br /> dreams meet investments, and every stay is a royal
-            experience
-          </div>
-          <Link href="/#footer">
-            <div className={styles.heroBtn}>EXPLORE</div>
-          </Link>
         </div>
-      </div>
 
-      <div className={styles.heroSectionm}>
-        <Swiper
-          // navigation={true}
-          pagination={{
-            dynamicBullets: true,
-          }}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          speed={2000}
-          loop={true}
-          modules={[Pagination, Autoplay]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            {" "}
-            <Image src={mhero} className={styles.heroImg2} placeholder="blur" />
-          </SwiperSlide>
-          <SwiperSlide>
-            {" "}
-            <Image
-              src={mhero2}
-              className={styles.heroImg2}
-              placeholder="blur"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            {" "}
-            <Image
-              src={mhero3}
-              className={styles.heroImg2}
-              placeholder="blur"
-            />
-          </SwiperSlide>
-        </Swiper>
+        <div className={styles.heroSectionm}>
+          <Swiper
+            // navigation={true}
+            pagination={{
+              dynamicBullets: true,
+            }}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            speed={2000}
+            loop={true}
+            modules={[Pagination, Autoplay]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              {" "}
+              <Image
+                src={mhero}
+                className={styles.heroImg2}
+                placeholder="blur"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              {" "}
+              <Image
+                src={mhero2}
+                className={styles.heroImg2}
+                placeholder="blur"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              {" "}
+              <Image
+                src={mhero3}
+                className={styles.heroImg2}
+                placeholder="blur"
+              />
+            </SwiperSlide>
+          </Swiper>
 
-        <div className={styles.heroInfo}>
-          <div className={styles.heroTitle}>
-            RAJKALP RESORTS & <br />
-            PRECIOUS SERVICES
+          <div className={styles.heroInfo}>
+            <div className={styles.heroTitle}>
+              RAJKALP RESORTS & <br />
+              PRECIOUS SERVICES
+            </div>
+            <div className={styles.heroDesc}>
+              Elevate your lifestyle with Rajkalp Resorts & Precious Services -
+              where <br /> dreams meet investments, and every stay is a royal
+              experience
+            </div>
+            <Link href="/#footer">
+              <div className={styles.heroBtn}>EXPLORE</div>
+            </Link>
           </div>
-          <div className={styles.heroDesc}>
-            Elevate your lifestyle with Rajkalp Resorts & Precious Services -
-            where <br /> dreams meet investments, and every stay is a royal
-            experience
-          </div>
-          <Link href="/#footer">
-            <div className={styles.heroBtn}>EXPLORE</div>
-          </Link>
         </div>
+
+        <About />
+        <Products />
+        {/* <ShopBtn /> */}
+        <Packages />
+        <Tadoba />
+        <Experience />
+        <Safari />
+
+        <Testimonials />
+        {/* <SecurityForm /> */}
+        <br />
+        <br />
+        {/* <Shop /> */}
       </div>
-
-      <About />
-      <Products />
-      {/* <ShopBtn /> */}
-      <Packages />
-      <Tadoba />
-      <Experience />
-      <Safari />
-
-      <Testimonials />
-      {/* <SecurityForm /> */}
-      <br />
-      <br />
-      {/* <Shop /> */}
-    </div>
+      <Footer />
+    </>
   );
 }
