@@ -60,6 +60,7 @@ function Layout({ children }) {
           width={600}
           height="auto"
         />
+        <button className={styles.signout}>Signout </button>
       </div>
       <div className={styles.ribbon}>
         <Link href="/dashboard" className={styles.ribs}>

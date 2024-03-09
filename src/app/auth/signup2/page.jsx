@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import styles from "../login/login.module.css";
 import Image from "next/image";
-import loginbg from "../../../public/assets/rajkalp/loginbg.png";
+import loginbg from "./../../../../public/assets/rajkalp/loginbg.png";
 import Footer from "@/components/footer/Footer";
-import logo from "./../../../public/assets/rajkalp/logo2.png";
+import logo from "./../../../../public/assets/rajkalp/logo2.png";
 import Link from "next/link";
 
 function Signup2() {
@@ -81,7 +81,7 @@ function Signup2() {
               className={styles.input5}
             />
           )}
-          <Link className={styles.link2} href="/confirmation">
+          <Link className={styles.link2} href="/auth/confirmation">
             <button className={styles.submitBtn2}>Set Password</button>
           </Link>
         </div>
@@ -90,7 +90,7 @@ function Signup2() {
           <div className={styles.head3}>
             Sign In and discover a great amount of new opportunities!
           </div>
-          <Link href="/login" className={styles.link}>
+          <Link href="/auth/login" className={styles.link}>
             <button className={styles.nextBtn}>Signin</button>
           </Link>
         </div>

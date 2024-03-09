@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "../login/login.module.css";
 import Image from "next/image";
-import loginbg from "../../../public/assets/rajkalp/loginbg.png";
+import loginbg from "../../../../public/assets/rajkalp/loginbg.png";
 import Footer from "@/components/footer/Footer";
-import logo from "./../../../public/assets/rajkalp/logo2.png";
+import logo from "./../../../../public/assets/rajkalp/logo2.png";
 import Link from "next/link";
 
 function Signup() {
@@ -71,7 +71,7 @@ function Signup() {
             </select>
           </div>
 
-          <Link className={styles.link2} href="/signup2">
+          <Link className={styles.link2} href="/auth/signup2">
             <button className={styles.submitBtn2}>Next</button>
           </Link>
         </div>
@@ -80,7 +80,7 @@ function Signup() {
           <div className={styles.head3}>
             Sign In and discover a great amount of new opportunities!
           </div>
-          <Link href="/signup2" className={styles.link}>
+          <Link href="/auth/signup2" className={styles.link}>
             <button className={styles.nextBtn}>Signin</button>
           </Link>
         </div>

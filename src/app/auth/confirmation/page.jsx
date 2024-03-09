@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import styles from "../login/login.module.css";
 import Image from "next/image";
-import loginbg from "../../../public/assets/rajkalp/loginbg.png";
+import loginbg from "../../../../public/assets/rajkalp/loginbg.png";
 import Footer from "@/components/footer/Footer";
-import logo from "./../../../public/assets/rajkalp/logo2.png";
+import logo from "./../../../../public/assets/rajkalp/logo2.png";
 import Link from "next/link";
 
 function Confirmation() {
