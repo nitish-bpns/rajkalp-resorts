@@ -63,7 +63,7 @@ export async function PUT(req) {
         await connectDB();
 
         const reqBody = await req.json();
-        const { password, referral } = reqBody;
+        const { password, confirmPassword, referral } = reqBody;
 
         const userId = req.nextUrl.searchParams.get("userId");
 
@@ -73,6 +73,14 @@ export async function PUT(req) {
 
         if (!password) {
             return NextResponse.json({ error: "Password is required" }, { status: 400 })
+        }
+
+        if (!confirmPassword) {
+            return NextResponse.json({ error: "Confirm Password is required" }, { status: 400 })
+        }
+
+        if (password !== confirmPassword) {
+            return NextResponse.json({ error: "Password and Confirm Password should be same" }, { status: 400 })
         }
 
         const user = await User.findById(userId);
@@ -112,6 +120,40 @@ export async function PUT(req) {
             },
             {
                 status: 201
+            }
+        )
+    } catch (error) {
+        return NextResponse.json({ error: error.message }, { status: 500 })
+    }
+}
+
+export async function GET(req) {
+    try {
+        await connectDB();
+
+        const userId = req.nextUrl.searchParams.get("userId");
+
+        if (!userId) {
+            return NextResponse.json({ error: "User id is required" }, { status: 400 })
+        }
+
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return NextResponse.json({ error: "User does not exist" }, { status: 400 })
+        }
+
+        const referrer = await User.findById(user.referredBy).select("referralId");
+
+        return NextResponse.json(
+            {
+                user: {
+                    ...user._doc,
+                    ref: referrer?.referralId
+                }
+            },
+            {
+                status: 200
             }
         )
     } catch (error) {

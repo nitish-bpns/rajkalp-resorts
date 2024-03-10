@@ -6,9 +6,23 @@ import loginbg from "./../../../../public/assets/rajkalp/loginbg.png";
 import Footer from "@/components/footer/Footer";
 import logo from "./../../../../public/assets/rajkalp/logo2.png";
 import Link from "next/link";
+import axios from "axios";
+import { useRouter, useSearchParams } from "next/navigation";
+
+const INITIAL_STATE = {
+  password: "",
+  confirmPassword: "",
+  referalId: "",
+};
 
 function Signup2() {
-  const [ref, setRef] = useState(true);
+  const router = useRouter();
+
+  const searchParams = useSearchParams();
+  const userID = searchParams.get("userID");
+
+  const [formData, setFormData] = useState(INITIAL_STATE);
+  const [ref, setRef] = useState(false);
 
   const handleRefYes = () => {
     setRef(true);
@@ -16,6 +30,74 @@ function Signup2() {
 
   const handleRefNo = () => {
     setRef(false);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((data) => ({
+      ...data,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (formData.password !== formData.confirmPassword) {
+        alert("Password and Confirm Password should be same");
+        return;
+      }
+
+      const res = await axios.put(
+        `/api/auth/register?userId=${userID}`,
+        formData
+      );
+
+      if (res.status === 201) {
+        const userID = res.data.user._id;
+        router.push(`/auth/confirmation?userID=${userID}`);
+      }
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status === 400 &&
+        error.response.data.error === "User id is required"
+      ) {
+        alert("User id is required");
+      } else if (
+        error.response &&
+        error.response.status === 400 &&
+        error.response.data.error === "Password is required"
+      ) {
+        alert("Password is required");
+      } else if (
+        error.response &&
+        error.response.status === 400 &&
+        error.response.data.error === "Confirm Password is required"
+      ) {
+        alert("Confirm Password is required");
+      } else if (
+        error.response &&
+        error.response.status === 400 &&
+        error.response.data.error === "User does not exist"
+      ) {
+        alert("User does not exist");
+      } else if (
+        error.response &&
+        error.response.status === 400 &&
+        error.response.data.error === "User already has a password"
+      ) {
+        alert("User already has a password");
+      } else if (
+        error.response &&
+        error.response.status === 400 &&
+        error.response.data.error === "Invalid referral code"
+      ) {
+        alert("Invalid referral code");
+      } else if (error.response && error.response.status === 500) {
+        alert("Internal Server Error");
+      }
+    }
   };
 
   return (
@@ -28,7 +110,7 @@ function Signup2() {
         className={styles.loginbg}
       />
       <div className={styles.container}>
-        <div className={styles.col1}>
+        <form className={styles.col1} onSubmit={handleSubmit}>
           <Image
             src={logo}
             alt="img"
@@ -42,11 +124,19 @@ function Signup2() {
             type="password"
             placeholder="Enter Password"
             className={styles.input5}
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
           />
           <input
             type="password"
             placeholder="Confirm Password"
             className={styles.input5}
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            required
           />
           <div className={styles.ref}>
             Referal Id:
@@ -58,6 +148,7 @@ function Signup2() {
                 value="yes"
                 className={styles.radio}
                 onChange={handleRefYes}
+                required
               />
               <label for="yes">Yes</label>
             </div>
@@ -79,12 +170,16 @@ function Signup2() {
               type="text"
               placeholder="Enter Referal Key"
               className={styles.input5}
+              name="referalId"
+              value={formData.referalId}
+              onChange={handleChange}
+              required
             />
           )}
-          <Link className={styles.link2} href="/auth/confirmation">
-            <button className={styles.submitBtn2}>Set Password</button>
-          </Link>
-        </div>
+          <button type="submit" className={styles.submitBtn2}>
+            Set Password
+          </button>
+        </form>
         <div className={styles.col2}>
           <div className={styles.head2}>Already have an account?</div>
           <div className={styles.head3}>
