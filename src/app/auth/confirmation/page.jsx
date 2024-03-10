@@ -1,22 +1,54 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../login/login.module.css";
 import Image from "next/image";
 import loginbg from "../../../../public/assets/rajkalp/loginbg.png";
 import Footer from "@/components/footer/Footer";
 import logo from "./../../../../public/assets/rajkalp/logo2.png";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import { set } from "mongoose";
+import axios from "axios";
 
 function Confirmation() {
-  const [ref, setRef] = useState(true);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const userID = searchParams.get("userID");
 
-  const handleRefYes = () => {
-    setRef(true);
+  const [loading, setLoading] = useState(true);
+  const [formData, setFormData] = useState({});
+
+  const handleClick = () => {
+    alert("Account Created Successfully");
+    router.push("/auth/login");
   };
 
-  const handleRefNo = () => {
-    setRef(false);
-  };
+  useEffect(() => {
+    if (!userID) {
+      router.push("/auth/login");
+    }
+
+    const fetchUser = async () => {
+      try {
+        setLoading(true);
+        const res = await axios.get(`/api/auth/register?userId=${userID}`);
+        if (res.status === 200) {
+          setFormData(res?.data?.user);
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 400) {
+          router.push("/auth/login");
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchUser();
+  }, [userID]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
@@ -39,63 +71,26 @@ function Confirmation() {
           <div className={styles.head1}>Confirmation Page</div>
 
           <div className={styles.inputRow}>
-            <div
-              type="text"
-              placeholder="First Name"
-              className={styles.inputcol1}
-            >
-              Name
-            </div>
-            <div
-              type="text"
-              placeholder="Last Name"
-              className={styles.inputcol2}
-            >
-              Title
-            </div>
+            <div className={styles.inputcol1}>{formData?.firstName}</div>
+            <div className={styles.inputcol2}>{formData?.lastName}</div>
           </div>
-          <div
-            type="text"
-            placeholder="Email Address"
-            className={styles.input2}
-          >
-            mail@mail.com
-          </div>
+          <div className={styles.input2}>{formData?.email}</div>
 
-          <div
-            type="text"
-            placeholder="Mobile Number"
-            className={styles.input2}
-          >
-            98798798788
-          </div>
+          <div className={styles.input2}>{formData?.contact}</div>
 
           <div className={styles.inputRow}>
-            <div
-              type="text"
-              placeholder="DOB (DD/MM/YYYY)"
-              className={styles.inputcol1}
-            >
-              02/02/2000
+            <div className={styles.inputcol1}>
+              {new Date(formData?.dob).getDate()}/
+              {new Date(formData?.dob).getMonth()}/
+              {new Date(formData?.dob).getFullYear()}
             </div>
-            <div type="text" placeholder="Gender" className={styles.inputcol2}>
-              Male
-            </div>
+            <div className={styles.inputcol2}>{formData?.gender}</div>
           </div>
 
-          <div
-            type="password"
-            placeholder="Enter Password"
-            className={styles.input5}
-          >
-            Password
-          </div>
-
-          <div className={styles.ref}>Referal Id: RJR987872</div>
-
-          <Link className={styles.link2} href="/dashboard">
-            <button className={styles.submitBtn2}>Create Account</button>
-          </Link>
+          <div className={styles.ref}>Referal Id: {formData?.ref}</div>
+          <button onClick={handleClick} className={styles.submitBtn2}>
+            Create Account
+          </button>
         </div>
         <div className={styles.col2}>
           <div className={styles.head2}>Already have an account?</div>

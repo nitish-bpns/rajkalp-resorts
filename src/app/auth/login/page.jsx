@@ -73,7 +73,9 @@ function Login() {
             value={formData.password}
             onChange={handleChange}
           />
-          <button className={styles.submitBtn}>Signin</button>
+          <button type="submit" className={styles.submitBtn}>
+            Signin
+          </button>
         </form>
         <div className={styles.col2}>
           <div className={styles.head2}>Don't have an account?</div>
