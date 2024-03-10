@@ -196,3 +196,23 @@
   padding: 0.5vw 0.5vw 0.5vw 0.8vw;
   border-radius: 15px;
 }
+
+.btnWrapper {
+	display: flex;
+	justify-content: flex-end;
+	width: 40vw;
+}
+.btnWrapper button {
+	display: flex;
+	padding: 10px 20px;
+	font-size: 1.2rem;
+	cursor: pointer;
+	background-color: #4caf50;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	gap: 5px;
+}
+.btnWrapper button:hover {
+	background-color: #45a049;
+}
