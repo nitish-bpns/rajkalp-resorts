@@ -11,6 +11,17 @@ function Layout({ children }) {
     window.location.reload();
   };
 
+  const handleLogout = () => {
+    try {
+      axios.get("/api/auth/logout");
+      router.push("/admin/login");
+      alert("You were logged out!");
+    } catch (err) {
+      console.log("Some error occured!");
+      alert("Unable to logout, try after a minute.");
+    }
+  };
+
   return (
     <>
       <div className={styles.nav}>
