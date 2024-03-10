@@ -9,22 +9,22 @@ const Dashboard = () => {
 
   const router = useRouter();
 
-  useEffect(() => {
-    const verifyToken = () => {
-      try {
-        axios.get("/api/auth/verify-token");
-        setVerified(true);
-      } catch (error) {
-        setVerified(false);
-        router.push("/admin/login");
-      }
-    };
-    verifyToken();
-  }, []);
+  // useEffect(() => {
+  //   const verifyToken = () => {
+  //     try {
+  //       axios.get("/api/auth/verify-token");
+  //       setVerified(true);
+  //     } catch (error) {
+  //       setVerified(false);
+  //       router.push("/admin/login");
+  //     }
+  //   };
+  //   verifyToken();
+  // }, []);
 
-  if (!verified) {
-    return <div>You are not verified to see the contents of this page!</div>;
-  }
+  // if (!verified) {
+  //   return <div>You are not verified to see the contents of this page!</div>;
+  // }
 
   return (
     <div className={styles.welcomeDiv}>

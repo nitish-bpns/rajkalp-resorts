@@ -8,6 +8,7 @@ import logo from "./../../../../public/assets/rajkalp/logo2.png";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import Loader from "@/components/loader/Loader";
 
 const INITIAL_STATE = {
   firstName: "",
@@ -21,6 +22,7 @@ const INITIAL_STATE = {
 function Signup() {
   const router = useRouter();
   const [formData, setFormData] = useState(INITIAL_STATE);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,6 +35,7 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true)
       const res = await axios.post("/api/auth/register", formData);
       if (res.status === 201) {
         const userID = res.data.user._id;
@@ -46,8 +49,14 @@ function Signup() {
       ) {
         alert("User already exists");
       }
+    }finally{
+      setLoading(false)
     }
   };
+
+  if(loading){
+    return <Loader/>
+  }
 
   return (
     <>
@@ -145,7 +154,7 @@ function Signup() {
           <div className={styles.head3}>
             Sign In and discover a great amount of new opportunities!
           </div>
-          <Link href="/auth/signup2" className={styles.link}>
+          <Link href="/auth/login" className={styles.link}>
             <button className={styles.nextBtn}>Signin</button>
           </Link>
         </div>

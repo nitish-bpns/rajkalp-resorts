@@ -19,7 +19,7 @@ function Layout({ children }) {
   const handleLogout = () => {
     try {
       axios.get("/api/auth/logout");
-      router.push("/admin/login");
+      router.push("/");
       alert("You were logged out!");
     } catch (err) {
       console.log("Some error occured!");
@@ -31,24 +31,24 @@ function Layout({ children }) {
     window.location.reload();
   };
 
-  useEffect(() => {
-    const verifyToken = () => {
-      setVerified(false);
-      try {
-        axios.get("/api/auth/verify-token");
-        setVerified(true);
-      } catch (error) {
-        setVerified(false);
-        router.push("/admin/login");
-      }
-    };
+  // useEffect(() => {
+  //   const verifyToken = () => {
+  //     setVerified(false);
+  //     try {
+  //       axios.get("/api/auth/verify-token");
+  //       setVerified(true);
+  //     } catch (error) {
+  //       setVerified(false);
+  //       router.push("/admin/login");
+  //     }
+  //   };
 
-    verifyToken();
-  }, []);
+  //   verifyToken();
+  // }, []);
 
-  if (!verified) {
-    return <Loader />;
-  }
+  // if (!verified) {
+  //   return <Loader />;
+  // }
 
   return (
     <>
@@ -60,55 +60,49 @@ function Layout({ children }) {
           width={600}
           height="auto"
         />
-        <button onClick={handleLogout} className={styles.signout}>Signout </button>
+        <button onClick={handleLogout} className={styles.signout}>
+          Signout
+        </button>
       </div>
       <div className={styles.ribbon}>
-        <Link href="/dashboard" className={styles.ribs}>
+        <Link href="/user" className={styles.ribs}>
           <button
-            className={
-              path === "/dashboard" ? styles.butActive : styles.ribbonBtn
-            }
+            className={path === "/user" ? styles.butActive : styles.ribbonBtn}
           >
             Welcome Letter
           </button>
         </Link>
-        <Link href="/dashboard/profile" className={styles.ribs}>
+        <Link href="/user/profile" className={styles.ribs}>
           <button
             className={
-              path === "/dashboard/profile"
-                ? styles.butActive
-                : styles.ribbonBtn
+              path === "/user/profile" ? styles.butActive : styles.ribbonBtn
             }
           >
             Profile
           </button>
         </Link>
-        <Link href="/dashboard/tree" className={styles.ribs}>
+        <Link href="/user/tree" className={styles.ribs}>
           <button
             className={
-              path === "/dashboard/tree" ? styles.butActive : styles.ribbonBtn
+              path === "/user/tree" ? styles.butActive : styles.ribbonBtn
             }
           >
             View Tree
           </button>
         </Link>
-        <Link href="/dashboard/commission" className={styles.ribs}>
+        <Link href="/user/commission" className={styles.ribs}>
           <button
             className={
-              path === "/dashboard/commission"
-                ? styles.butActive
-                : styles.ribbonBtn
+              path === "/user/commission" ? styles.butActive : styles.ribbonBtn
             }
           >
             Commission
           </button>
         </Link>
-        <Link href="/dashboard/referral" className={styles.ribs}>
+        <Link href="/user/referral" className={styles.ribs}>
           <button
             className={
-              path === "/dashboard/referral"
-                ? styles.butActive
-                : styles.ribbonBtn
+              path === "/user/referral" ? styles.butActive : styles.ribbonBtn
             }
           >
             Get Your Referral ID

@@ -33,6 +33,15 @@ const UserSchema = new mongoose.Schema(
         password: {
             type: String,
         },
+        address: {
+            type: String,
+        },
+        city: {
+            type: String,
+        },
+        state: {
+            type: String,
+        },
         role: {
             type: String,
             enum: ["user", "admin"],

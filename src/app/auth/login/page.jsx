@@ -8,6 +8,7 @@ import logo from "./../../../../public/assets/rajkalp/logo2.png";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Loader from "@/components/loader/Loader";
 
 const INITIAL_STATE = {
   email: "",
@@ -17,6 +18,7 @@ const INITIAL_STATE = {
 function Login() {
   const router = useRouter();
   const [formData, setFormData] = useState(INITIAL_STATE);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,13 +32,36 @@ function Login() {
     e.preventDefault();
 
     try {
+      setLoading(true)
       const res = await axios.post("/api/auth/login", formData);
 
       if (res.status === 200) {
-        router.push("/dashboard");
+        router.push("/user");
       }
-    } catch (error) {}
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status === 400 &&
+        error.response.data.error === "No user found"
+      ) {
+        alert("No user found");
+      } else if (
+        error.response &&
+        error.response.status === 400 &&
+        error.response.data.error === "Invalid credentials"
+      ) {
+        alert("Invalid credentials");
+      } else {
+        alert("Internal Server Error");
+      }
+    }finally{
+      setLoading(false)
+    }
   };
+
+if(loading){
+  return <Loader/>
+}
 
   return (
     <>

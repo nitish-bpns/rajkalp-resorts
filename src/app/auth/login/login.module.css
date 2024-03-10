@@ -72,7 +72,7 @@
   border: 1px solid black;
   border-radius: 15px;
   padding: 0.4vw;
-  width: 100%;
+  width: 50%;
   font-size: 1.1vw;
   cursor: pointer;
 }
@@ -198,21 +198,21 @@
 }
 
 .btnWrapper {
-	display: flex;
-	justify-content: flex-end;
-	width: 40vw;
+  display: flex;
+  justify-content: flex-end;
+  width: 40vw;
 }
 .btnWrapper button {
-	display: flex;
-	padding: 10px 20px;
-	font-size: 1.2rem;
-	cursor: pointer;
-	background-color: #4caf50;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	gap: 5px;
+  display: flex;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  gap: 5px;
 }
 .btnWrapper button:hover {
-	background-color: #45a049;
+  background-color: #45a049;
 }

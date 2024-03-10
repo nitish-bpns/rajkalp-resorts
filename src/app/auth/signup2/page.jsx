@@ -8,6 +8,7 @@ import logo from "./../../../../public/assets/rajkalp/logo2.png";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
+import Loader from "@/components/loader/Loader";
 
 const INITIAL_STATE = {
   password: "",
@@ -23,6 +24,7 @@ function Signup2() {
 
   const [formData, setFormData] = useState(INITIAL_STATE);
   const [ref, setRef] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleRefYes = () => {
     setRef(true);
@@ -43,6 +45,7 @@ function Signup2() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       if (formData.password !== formData.confirmPassword) {
         alert("Password and Confirm Password should be same");
         return;
@@ -97,8 +100,14 @@ function Signup2() {
       } else if (error.response && error.response.status === 500) {
         alert("Internal Server Error");
       }
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <>
