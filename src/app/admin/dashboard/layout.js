@@ -14,7 +14,7 @@ function Layout({ children }) {
   const handleLogout = () => {
     try {
       axios.get("/api/auth/logout");
-      router.push("/admin/login");
+      router.push("/");
       alert("You were logged out!");
     } catch (err) {
       console.log("Some error occured!");
