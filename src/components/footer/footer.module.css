@@ -35,9 +35,23 @@
   margin: 0 0 1vw 0;
 }
 .footlogo {
-  width: 70%;
+  width: 50%;
   height: auto;
   margin: 0;
+}
+.hlink,
+.hlink:hover,
+.hlink:focus,
+.hlink:active {
+  text-decoration: none;
+  color: inherit;
+}
+.policy {
+  font-size: 1.2vw;
+  text-align: left;
+  color: white;
+  padding: 2% 0 0 0;
+  font-family: "Times New Roman", Times, serif;
 }
 .cont {
   display: flex;
@@ -122,6 +136,13 @@
   .footlogo {
     width: 60%;
     margin: 0 0 0 18vw;
+  }
+  .policy {
+    font-size: 4vw;
+    text-align: center;
+    color: rgb(192, 192, 192);
+    padding: 2% 0 0 0;
+    font-family: "Times New Roman", Times, serif;
   }
   .contb {
     font-size: 5vw;
