@@ -22,20 +22,12 @@ const Footer = () => {
           placeholder="blur"
         />
         <div className={styles.policy}>
-          <a
-            href="https://docs.google.com/document/d/15xkaiDcH77NWj4NOvCAoFhgetrzZo3BKoZcLNxDefsE/edit?usp=sharing"
-            target="_blank"
-            className={styles.hlink}
-          >
+          <a href="/terms-conditions" className={styles.hlink}>
             Terms and Conditions
           </a>
         </div>
         <div className={styles.policy}>
-          <a
-            href="https://docs.google.com/document/d/1AcY-zM3lUDA_d2Y2NCEUe9dSMF-MalnZ6tUzMxt8pqc/edit?usp=sharing"
-            target="_blank"
-            className={styles.hlink}
-          >
+          <a href="/refund-policy" className={styles.hlink}>
             Refund Policy
           </a>
         </div>

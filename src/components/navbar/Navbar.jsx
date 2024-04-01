@@ -26,7 +26,7 @@ const Navbar = () => {
         <Link className={styles.link} href="/">
           HOME
         </Link>
-        <Link className={styles.link} href="/#footer">
+        <Link className={styles.link} href="/book-now">
           BOOK NOW
         </Link>
         <Link className={styles.link} href="/auth/login">
@@ -52,7 +52,7 @@ const Navbar = () => {
           </Link>
           <Link
             className={styles.link2}
-            href="/#footer"
+            href="/book-now"
             onClick={() => setOpen(!open)}
           >
             BOOK NOW
